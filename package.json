@@ -1,0 +1,13 @@
+{
+  "name": "calculadora-de-impuestos-rd",
+  "version": "1.0.0",
+  "description": "Una calculadora de impuestos para los residentes de la República Dominicana",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jeansy Pena",
+  "license": "ISC",
+  "type": "commonjs"
+}

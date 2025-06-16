@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg" href="./Public/logo-calculador-de-impuestos-rd.png">
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Calculadora de Impuestos RD">
+    <meta property="og:type" content="website">
+    <meta property="og:image"
+        content="https://vjeansy.github.io/Calculadora-De-Impuestos-RD/Public/logo-calculador-de-impuestos-rd.png">
+    <meta property="og:url" content="https://vjeansy.github.io/Calculadora-De-Impuestos-RD/">
+    <meta property="og:description"
+        content="Calculadora de Impuestos RD - Calcula tus deducciones salariales según las leyes dominicanas." />
+    <meta property="og:locale" content="es_DO">
+    <meta property="og:author" content="Jeansy Peña">
+    <meta property="og:keywords"
+        content="Calculadora de Impuestos, RD, Impuestos, Deducciones Salariales, DGII, AFP, SFS, ARS, SENASA">
+    <meta property="og:site_name" content="Calculadora de Impuestos RD">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Impuestos RD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./Public/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <header data-aos="fade-down" data-aos-duration="1500" data-aos-once="true">
+        <div class="gradient-bg text-white py-8 px-4">
+            <div class="container mx-auto">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold">Calculadora de Impuestos RD
+                            <img src="https://tunominard.com/dominican-republic.png" alt="bandera RD"
+                                class="inline-block w-8 h-8 ml-2">
+                        </h1>
+                        <p class="mt-2 opacity-90">Calcula tus deducciones salariales según las leyes dominicanas</p>
+                    </div>
+                    <div class="hidden md:block animate-bounce">
+                        <i class="fas fa-calculator text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Formulario -->
+                <section class="lg:col-span-2 bg-white rounded-xl shadow-md p-6" data-aos="fade-up"
+                    data-aos-duration="1500">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Ingresa tus datos</h2>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label for="salario" class="block text-sm font-medium text-gray-700 mb-1">Salario Bruto
+                                Mensual
+                                (RD$)</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500">RD$</span>
+                                </div>
+                                <input type="number" id="salario" class="block w-full pl-12 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2
+                                    focus:ring-blue-500 focus:border-blue-500" placeholder="Ej: 45000" min="0"
+                                    required>
+                            </div>
+                            <div class="mt-2">
+                                <input type="range" id="salarioRange"
+                                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0"
+                                    max="500000" step="1000" value="0">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="tipoContrato" class="block text-sm font-medium text-gray-700 mb-1">Tipo de
+                                    Contrato</label>
+                                <select id="tipoContrato" class="block w-full py-3 px-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500
+                                    focus:border-blue-500 hover:cursor-pointer">
+                                    <option value="privado">Sector Privado</option>
+                                    <option value="publico">Sector Público</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="seguro" class="block text-sm font-medium text-gray-700 mb-1">Seguro de
+                                    Salud</label>
+                                <select id="seguro" class="block w-full py-3 px-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500
+                                    focus:border-blue-500 hover:cursor-pointer">
+                                    <option value="ars">ARS (3.04%)</option>
+                                    <option value="senasa">SENASA (3.04%)</option>
+                                    <option value="ninguno">No Aplica</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Opcionales</label>
+                                <div class="space-y-2">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="afp"
+                                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                            checked>
+                                        <label for="afp"
+                                            class="ml-2 block text-sm text-gray-700 hover:cursor-pointer">AFP
+                                            (2.87%)</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="sfs"
+                                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                            checked>
+                                        <label for="sfs"
+                                            class="ml-2 block text-sm text-gray-700 hover:cursor-pointer">SFS
+                                            (3.04%)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="dependientes" class="block text-sm font-medium text-gray-700 mb-1">Personas
+                                    Dependientes</label>
+                                <select id="dependientes" class="block w-full py-3 px-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500
+                                    focus:border-blue-500 hover:cursor-pointer">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3 o más</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button id="calcular" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition
+                                duration-300 transform hover:scale-105">
+                                <i class="fas fa-calculator mr-2"></i> Calcular Impuestos
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resultados -->
+                <section class="lg:col-span-1">
+                    <div id="resultados" class="result-card bg-white rounded-xl shadow-lg p-6 hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Resultados</h2>
+
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span class="text-gray-600">Salario Bruto:</span>
+                                <span id="salarioBruto" class="font-semibold">RD$ 0.00</span>
+                            </div>
+
+                            <div class="space-y-3">
+                                <h3 class="font-medium text-gray-700">Deducciones:</h3>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">ISR:</span>
+                                    <span id="isr" class="font-medium">RD$ 0.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">AFP (2.87%):</span>
+                                    <span id="afpDed" class="font-medium">RD$ 0.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">SFS (3.04%):</span>
+                                    <span id="sfsDed" class="font-medium">RD$ 0.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">ARS/SENASA (3.04%):</span>
+                                    <span id="arsDed" class="font-medium">RD$ 0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 font-medium">Total Deducciones:</span>
+                                    <span id="totalDed" class="font-bold text-red-600">RD$ 0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 font-medium">Salario Neto:</span>
+                                    <span id="salarioNeto" class="font-bold text-green-600 text-xl">RD$ 0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-medium text-blue-800 mb-2">Desglose ISR:</h4>
+                                <p id="isrInfo" class="text-sm text-blue-700">Ingresa un salario para calcular el ISR
+                                    según
+                                    las tablas del DGII.</p>
+                            </div>
+                            <button id="imprimirResultados" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition
+                                duration-300 transform hover:scale-105">Imprimir Resultados <i class="fas fa-print ml-2"></i></button>
+                        </div>
+                    </div>
+
+                    <div id="inicialCard"
+                        class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center h-full"
+                        data-aos="fade-left" data-aos-duration="1500" data-aos-once="true">
+                        <div class="text-center">
+                            <i class="fas fa-hand-holding-usd text-5xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-700 mb-2">Calcula tus impuestos</h3>
+                            <p class="text-gray-500">Ingresa tu salario y configura tus deducciones para ver cuánto
+                                recibirás neto.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    </main>
+    <!-- Información sobre impuestos -->
+    <caption>
+        <div class="mt-12 bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Información sobre impuestos en RD</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                    <h3 class="font-bold text-blue-800 mb-2"><i class="fas fa-landmark mr-2"></i> ISR (Impuesto Sobre la
+                        Renta)</h3>
+                    <p class="text-sm text-gray-700">El ISR se calcula en base a tablas progresivas. Para 2023, las
+                        tasas van desde 0% hasta 25% dependiendo del salario.</p>
+                </div>
+
+                <div class="bg-green-50 p-4 rounded-lg" data-aos="fade-up" data-aos-duration="2000"
+                    data-aos-once="true">
+                    <h3 class="font-bold text-green-800 mb-2"><i class="fas fa-shield-alt mr-2"></i> AFP (2.87%)</h3>
+                    <p class="text-sm text-gray-700">Aporte para el fondo de pensiones. Obligatorio para empleados del
+                        sector privado.</p>
+                </div>
+
+                <div class="bg-purple-50 p-4 rounded-lg" data-aos="fade-up" data-aos-duration="3000"
+                    data-aos-once="true">
+                    <h3 class="font-bold text-purple-800 mb-2"><i class="fas fa-heartbeat mr-2"></i> SFS/ARS
+                        (3.04%/3.04%)
+                    </h3>
+                    <p class="text-sm text-gray-700">Seguro Familiar de Salud (3.04%) y Administradora de Riesgos de
+                        Salud
+                        (3.04%) para cobertura médica.</p>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <h3 class="font-bold text-gray-700 mb-2">Tabla de ISR <span id="fechaActual"></span> (Mensual)</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200" data-aos="flip-up"
+                        data-aos-duration="1500" data-aos-once="true">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="py-2 px-4 border-b text-left">Desde</th>
+                                <th class="py-2 px-4 border-b text-left">Hasta</th>
+                                <th class="py-2 px-4 border-b text-left">Excedente</th>
+                                <th class="py-2 px-4 border-b text-left">Tasa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 border-b">RD$ 0</td>
+                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
+                                <td class="py-2 px-4 border-b">RD$ 0</td>
+                                <td class="py-2 px-4 border-b">0%</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
+                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
+                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
+                                <td class="py-2 px-4 border-b">15%</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
+                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
+                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
+                                <td class="py-2 px-4 border-b">20%</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
+                                <td class="py-2 px-4 border-b">En adelante</td>
+                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
+                                <td class="py-2 px-4 border-b">25%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </caption>
+
+    <div id="ventana-emergente"></div>
+
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">Calculadora de Impuestos RD
+                        <img src="https://tunominard.com/dominican-republic.png" alt="bandera RD"
+                            class="inline-block w-8 h-8 ml-2">
+                    </h3>
+                    <p class="text-gray-400 mt-1">Herramienta para calcular deducciones salariales</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/jeansypena" target="_blank"
+                        class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                    <a href="https://www.dgii.gov.do/Paginas/default.aspx" target="_blank"
+                        class="text-gray-400 hover:text-white transition">DGII <i
+                            class="fa-solid fa-up-right-from-square"></i></a>
+                    <a href="https://vjeansy.github.io/My-Portfolio/index.html"
+                        class="text-gray-400 hover:text-white transition" target="_blank">JPenDev <i
+                            class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-400 text-sm">
+                <p><span id="fechaFooter"></span> Calculadora de Impuestos RD. Todos los derechos reservados.</p>
+                <p class="mt-1">Esta herramienta es informativa y no constituye asesoría fiscal profesional.</p>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="./dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init();
+        });
+    </script>
+</body>
+
+</html>
