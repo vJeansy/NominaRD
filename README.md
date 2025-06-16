@@ -31,26 +31,6 @@
 - **JavaScript**
 - **[AOS](https://michalsnik.github.io/aos/)** para animaciones (opcional)
 
----
-
-## 📦 Instalación local
-
-```bash
-git clone https://github.com/tu-usuario/Calculadora-Impuestos-RD.git
-cd Calculadora-Impuestos-RD
-# Si usas servidor local:
-# Puedes abrir index.html directamente o correr con live-server
-
-📁 public/
-   ├── banner.png
-   ├── preview.png
-📁 src/
-   ├── input.css (Tailwind)
-   └── script.js
-📄 index.html
-📄 tailwind.config.js
-📄 README.md
-
 🖼️ Imágenes sugeridas
 banner.png: [![image](https://github.com/user-attachments/assets/519fa39a-7e83-4177-a20f-d783a3651481)]
 
@@ -78,3 +58,23 @@ Este proyecto está bajo la licencia MIT.
 Puedes usarlo libremente con fines educativos o comerciales, mencionando al autor.
 
 https://vjeansy.github.io/NominaRD
+
+---
+
+## 📦 Instalación local
+
+```bash
+git clone https://github.com/tu-usuario/Calculadora-Impuestos-RD.git
+cd Calculadora-Impuestos-RD
+# Si usas servidor local:
+# Puedes abrir index.html directamente o correr con live-server
+
+📁 public/
+   ├── banner.png
+   ├── preview.png
+📁 src/
+   ├── input.css (Tailwind)
+   └── script.js
+📄 index.html
+📄 tailwind.config.js
+📄 README.md
