@@ -5,11 +5,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg" href="./Public/logo-calculador-de-impuestos-rd.png">
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Calculadora de Impuestos RD">
+    <meta property="og:title" content="NominaRD">
     <meta property="og:type" content="website">
     <meta property="og:image"
         content="https://vjeansy.github.io/Calculadora-De-Impuestos-RD/Public/logo-calculador-de-impuestos-rd.png">
-    <meta property="og:url" content="https://vjeansy.github.io/Calculadora-De-Impuestos-RD/">
+    <meta property="og:url" content="https://vjeansy.github.io/NominaRD/">
     <meta property="og:description"
         content="Calculadora de Impuestos RD - Calcula tus deducciones salariales según las leyes dominicanas." />
     <meta property="og:locale" content="es_DO">
@@ -32,10 +32,12 @@
             <div class="container mx-auto">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-3xl md:text-4xl font-bold">Calculadora de Impuestos RD
-                            <img src="https://tunominard.com/dominican-republic.png" alt="bandera RD"
-                                class="inline-block w-8 h-8 ml-2">
-                        </h1>
+                        <a href="index.html">
+                            <h1 class="text-3xl md:text-4xl font-bold transition duration-300 transform hover:scale-105">
+                                NominaRD<img src="https://tunominard.com/dominican-republic.png" alt="bandera RD"
+                                    class="inline-block w-8 h-8 ml-2">
+                            </h1>
+                        </a>
                         <p class="mt-2 opacity-90">Calcula tus deducciones salariales según las leyes dominicanas</p>
                     </div>
                     <div class="hidden md:block animate-bounce">
@@ -67,6 +69,10 @@
                                     focus:ring-blue-500 focus:border-blue-500" placeholder="Ej: 45000" min="0"
                                     required>
                             </div>
+                            <span class="text-sm text-gray-400">
+                                <i class="fa-solid fa-circle-info text-blue-400"></i>
+                                Incluye tu salario antes de impuestos y bonificaciones si aplica.
+                            </span>
                             <div class="mt-2">
                                 <input type="range" id="salarioRange"
                                     class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0"
@@ -110,17 +116,17 @@
                                             (2.87%)</label>
                                     </div>
                                     <div class="flex items-center">
-                                        <input type="checkbox" id="sfs"
+                                        <!-- <input type="checkbox" id="sfs"
                                             class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                                             checked>
                                         <label for="sfs"
                                             class="ml-2 block text-sm text-gray-700 hover:cursor-pointer">SFS
-                                            (3.04%)</label>
+                                            (3.04%)</label> -->
                                     </div>
                                 </div>
                             </div>
 
-                            <div>
+                            <!-- <div>
                                 <label for="dependientes" class="block text-sm font-medium text-gray-700 mb-1">Personas
                                     Dependientes</label>
                                 <select id="dependientes" class="block w-full py-3 px-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500
@@ -130,7 +136,7 @@
                                     <option value="2">2</option>
                                     <option value="3">3 o más</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div>
@@ -163,10 +169,10 @@
                                     <span class="text-gray-500">AFP (2.87%):</span>
                                     <span id="afpDed" class="font-medium">RD$ 0.00</span>
                                 </div>
-                                <div class="flex justify-between text-sm">
+                                <!-- <div class="flex justify-between text-sm">
                                     <span class="text-gray-500">SFS (3.04%):</span>
                                     <span id="sfsDed" class="font-medium">RD$ 0.00</span>
-                                </div>
+                                </div> -->
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-500">ARS/SENASA (3.04%):</span>
                                     <span id="arsDed" class="font-medium">RD$ 0.00</span>
@@ -194,7 +200,11 @@
                                     las tablas del DGII.</p>
                             </div>
                             <button id="imprimirResultados" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition
-                                duration-300 transform hover:scale-105">Imprimir Resultados <i class="fas fa-print ml-2"></i></button>
+                                duration-300 transform hover:scale-105"><i class="fas fa-print ml-2"></i> Imprimir
+                                Resultados</button>
+                            <button id="limpiar-resultados" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition
+                                duration-300 transform hover:scale-105"><i class="fa-solid fa-rotate-right"></i>
+                                Limpiar Resultados</button>
                         </div>
                     </div>
 
@@ -220,7 +230,8 @@
                 <div class="bg-blue-50 p-4 rounded-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                     <h3 class="font-bold text-blue-800 mb-2"><i class="fas fa-landmark mr-2"></i> ISR (Impuesto Sobre la
                         Renta)</h3>
-                    <p class="text-sm text-gray-700">El ISR se calcula en base a tablas progresivas. Para 2023, las
+                    <p class="text-sm text-gray-700">El ISR se calcula en base a tablas progresivas. Para <span
+                            id="fecha-isr"></span>, las
                         tasas van desde 0% hasta 25% dependiendo del salario.</p>
                 </div>
 
@@ -243,7 +254,7 @@
             </div>
 
             <div class="mt-6">
-                <h3 class="font-bold text-gray-700 mb-2">Tabla de ISR <span id="fechaActual"></span> (Mensual)</h3>
+                <h3 class="font-bold text-gray-700 mb-2">Tabla de ISR <span id="fecha-tabla"></span> (Mensual)</h3>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-200" data-aos="flip-up"
                         data-aos-duration="1500" data-aos-once="true">
@@ -258,26 +269,26 @@
                         <tbody>
                             <tr>
                                 <td class="py-2 px-4 border-b">RD$ 0</td>
-                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
+                                <td class="py-2 px-4 border-b">RD$ 34,685</td>
                                 <td class="py-2 px-4 border-b">RD$ 0</td>
                                 <td class="py-2 px-4 border-b">0%</td>
                             </tr>
                             <tr class="bg-gray-50">
-                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
-                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
-                                <td class="py-2 px-4 border-b">RD$ 47,524</td>
+                                <td class="py-2 px-4 border-b">RD$ 34,685</td>
+                                <td class="py-2 px-4 border-b">RD$ 52,027</td>
+                                <td class="py-2 px-4 border-b">RD$ 17,342</td>
                                 <td class="py-2 px-4 border-b">15%</td>
                             </tr>
                             <tr>
-                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
-                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
-                                <td class="py-2 px-4 border-b">RD$ 69,905</td>
+                                <td class="py-2 px-4 border-b">RD$ 52,027</td>
+                                <td class="py-2 px-4 border-b">RD$ 72,260</td>
+                                <td class="py-2 px-4 border-b">RD$ 20,232</td>
                                 <td class="py-2 px-4 border-b">20%</td>
                             </tr>
                             <tr class="bg-gray-50">
-                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
-                                <td class="py-2 px-4 border-b">En adelante</td>
-                                <td class="py-2 px-4 border-b">RD$ 139,810</td>
+                                <td class="py-2 px-4 border-b">RD$ 72,260</td>
+                                <td class="py-2 px-4 border-b">999,999,999</td>
+                                <td class="py-2 px-4 border-b">RD$ 999,927,739</td>
                                 <td class="py-2 px-4 border-b">25%</td>
                             </tr>
                         </tbody>
@@ -294,7 +305,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <h3 class="text-xl font-bold">Calculadora de Impuestos RD
+                    <h3 class="text-xl font-bold">NominaRD
                         <img src="https://tunominard.com/dominican-republic.png" alt="bandera RD"
                             class="inline-block w-8 h-8 ml-2">
                     </h3>
@@ -312,7 +323,7 @@
                 </div>
             </div>
             <div class="mt-6 text-center text-gray-400 text-sm">
-                <p><span id="fechaFooter"></span> Calculadora de Impuestos RD. Todos los derechos reservados.</p>
+                <p><span id="fecha-footer"></span> NominaRD. Todos los derechos reservados.</p>
                 <p class="mt-1">Esta herramienta es informativa y no constituye asesoría fiscal profesional.</p>
             </div>
         </div>
